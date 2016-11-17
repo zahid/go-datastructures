@@ -30,10 +30,11 @@ func (s *Stack) push(e Element) {
 	s.elements = append(s.elements, e)
 }
 
-func (s *Stack) pop() {
-	// something's funny about this index
-	lastIndex := len(s.elements) - 1
-	s.elements = s.elements[1:lastIndex]
+func (s *Stack) pop() Element {
+	top := s.elements[0]
+	s.elements = s.elements[1:]
+	fmt.Printf("Popped off %v\n", top)
+	return top
 }
 
 func main() {
