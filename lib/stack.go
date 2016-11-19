@@ -37,14 +37,26 @@ func (s *Stack) pop() Element {
 	return top
 }
 
+func (s *Stack) peek() Element {
+	top := s.elements[0]
+	fmt.Printf("Peeking at %v\n", top)
+	return top
+}
+
+func (s *Stack) isEmpty() bool {
+	return len(s.elements) == 0
+}
+
 func main() {
 	stackOfPapers := Stack{}
 
+	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
 	stackOfPapers.push("bill")
 	stackOfPapers.push("reciept")
 	stackOfPapers.push("menu")
 	stackOfPapers.push("picture")
 	stackOfPapers.pop()
+	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
 
 	fmt.Printf("(%v, %T)\n", stackOfPapers, stackOfPapers)
 }
