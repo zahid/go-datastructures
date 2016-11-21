@@ -47,16 +47,24 @@ func (s *Stack) isEmpty() bool {
 	return len(s.elements) == 0
 }
 
+func (s *Stack) clear() {
+	s.elements = Elements{}
+}
+
 func main() {
 	stackOfPapers := Stack{}
 
 	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
+
 	stackOfPapers.push("bill")
 	stackOfPapers.push("reciept")
 	stackOfPapers.push("menu")
+
+	stackOfPapers.clear()
+
 	stackOfPapers.push("picture")
 	stackOfPapers.pop()
-	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
 
+	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
 	fmt.Printf("(%v, %T)\n", stackOfPapers, stackOfPapers)
 }
