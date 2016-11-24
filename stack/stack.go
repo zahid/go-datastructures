@@ -1,8 +1,6 @@
-package main
+package	stack
 
-import (
-	"fmt"
-)
+import ("fmt")
 
 /*
 We are implementing a First-In-First-Out stack
@@ -63,8 +61,9 @@ func main() {
 	stackOfPapers.clear()
 
 	stackOfPapers.push("picture")
+
 	stackOfPapers.pop()
 
 	fmt.Printf("Stack isEmpty=%v\n", stackOfPapers.isEmpty())
-	fmt.Printf("(%v, %T)\n", stackOfPapers, stackOfPapers)
+	fmt.Printf("stack=(%v, %T)\n", stackOfPapers, stackOfPapers)
 }
