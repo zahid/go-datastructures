@@ -5,9 +5,9 @@ import (
 )
 
 func TestPush(t *testing.T) {
-	stackOfPapers := Stack{}
+	stackOfPapers := SliceStack{}
 	item := "Phone number"
-	stackOfPapers.push(item)
+	stackOfPapers.Push(item)
 
 	expectedSize := 1
 	actualSize := len(stackOfPapers.elements)
@@ -22,11 +22,17 @@ func TestPush(t *testing.T) {
 }
 
 func TestPop(t *testing.T) {
-	stackOfPapers := Stack{}
-	item := "Dinner check"
-	stackOfPapers.push(item)
+	stackOfPapers := SliceStack{}
+	poppedNothing := stackOfPapers.Pop()
 
-	poppedItem := stackOfPapers.pop()
+	if poppedNothing != nil {
+		t.Errorf("Popping on an empty Stack should return nil, instead returned %v", poppedNothing)
+	}
+
+	item := "Dinner check"
+	stackOfPapers.Push(item)
+
+	poppedItem := stackOfPapers.Pop()
 
 	// Check that poppedItem == item
 	if item != poppedItem {
@@ -39,11 +45,18 @@ func TestPop(t *testing.T) {
 }
 
 func TestPeek(t *testing.T) {
-	stackOfPapers := Stack{}
-	item := "Dry cleaning bill"
-	stackOfPapers.push(item)
+	stackOfPapers := SliceStack{}
 
-	peekedItem := stackOfPapers.peek()
+	peekedNothing := stackOfPapers.Peek()
+
+	if peekedNothing != nil {
+		t.Errorf("Peeking on an empty Stack should return nil, instead returned %v", peekedNothing)
+	}
+
+	item := "Dry cleaning bill"
+	stackOfPapers.Push(item)
+
+	peekedItem := stackOfPapers.Peek()
 
 	// Check that peekedItem == item
 	if item != peekedItem {
@@ -62,26 +75,26 @@ func TestPeek(t *testing.T) {
 }
 
 func TestIsEmpty(t *testing.T) {
-	stackOfPapers := Stack{}
+	stackOfPapers := SliceStack{}
 
 	// Stack should start as empty
-	if stackOfPapers.isEmpty() != true {
+	if stackOfPapers.IsEmpty() != true {
 		t.Errorf("Stack should be empty, but got %v instead", stackOfPapers)
 	}
 
-	stackOfPapers.push("Business card")
+	stackOfPapers.Push("Business card")
 
 	// Stack not be empty if an item is pushed to it
-	if stackOfPapers.isEmpty() == true {
+	if stackOfPapers.IsEmpty() == true {
 		t.Errorf("Stack should not be empty, but got %v instead", stackOfPapers)
 	}
 }
 
 func TestClear(t *testing.T) {
-	stackOfPapers := Stack{}
+	stackOfPapers := SliceStack{}
 
-	stackOfPapers.push("Old movie tickets")
-	stackOfPapers.clear()
+	stackOfPapers.Push("Old movie tickets")
+	stackOfPapers.Clear()
 
 	// Should have no elements after clearing
 	if len(stackOfPapers.elements) != 0 {
