@@ -1,21 +1,24 @@
 package stack
 
 /*
-We are implementing a First-In-First-Out stack
+We are implementing a First-In-Last-Out stack
 */
 
 /*
-We have a null interface which we use as a type for an "element"
+Element is an interface for an item in the Stack
 */
 type Element interface{}
 
 /*
-A slice of Elements
+Elements is a collection of Element structs.
+It is represented using a slice
 */
 type Elements []Element
 
 /*
-For now, this is a string type struct
+Stack is an data structure which is a linear collection of elements with two primary methods, push,
+which adds an element to the collection, and pop, which removes the most recently added element.
+The elements are added and removed in LIFO (last in, first out).
 */
 type Stack struct {
 	elements Elements
